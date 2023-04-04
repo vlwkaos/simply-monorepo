@@ -1,12 +1,49 @@
 lockfileVersion: 5.4
 
-specifiers:
-  typescript: ^4.9.3
-  vite: ^4.2.0
+importers:
 
-devDependencies:
-  typescript: 4.9.5
-  vite: 4.2.1
+  .:
+    specifiers:
+      typescript: ^4.9.3
+      vite: ^4.2.0
+    devDependencies:
+      typescript: 4.9.5
+      vite: 4.2.1
+
+  packages/apps/kaos-web:
+    specifiers:
+      '@kaos-editor/kaos-core': workspace:*
+      typescript: ^4.9.3
+      vite: ^4.2.0
+    dependencies:
+      '@kaos-editor/kaos-core': link:../../../test/lib
+    devDependencies:
+      typescript: 4.9.5
+      vite: 4.2.1
+
+  packages/libs/kaos-core:
+    specifiers:
+      typescript: ^4.9.3
+      vite: ^4.2.0
+    devDependencies:
+      typescript: 4.9.5
+      vite: 4.2.1
+
+  templates/lib:
+    specifiers:
+      typescript: ^4.9.3
+      vite: ^4.2.0
+    devDependencies:
+      typescript: 4.9.5
+      vite: 4.2.1
+
+  test/lib:
+    specifiers:
+      typescript: ^4.9.3
+      vite: ^4.2.0
+    devDependencies:
+      typescript: 4.9.5
+      vite: 4.2.1
 
 packages:
 

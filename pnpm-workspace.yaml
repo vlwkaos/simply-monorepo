@@ -1,0 +1,3 @@
+pakcages:
+- "./packages/apps/**"
+- "./packages/libs/**"
