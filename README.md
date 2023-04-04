@@ -1,2 +1,7 @@
 # web-armory
-miscellaneous
+
+Miscellaneous web api experiments
+
+```sh
+pnpm run dev
+```
