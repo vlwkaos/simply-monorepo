@@ -5,7 +5,8 @@
   "scripts": {
     "start": "pnpm run dev",
     "dev": "pnpm -F @my-monorepo/web-demo dev",
-    "generate": "pnpm ts-node ./tools/generator.ts"
+    "generate": "pnpm ts-node ./tools/generator.ts",
+    "rename-repo": "pnpm ts-node ./tools/rename-repo.ts"
   },
   "devDependencies": {
     "typescript": "^4.9.3",
