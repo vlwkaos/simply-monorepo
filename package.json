@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "scripts": {
     "start": "pnpm run dev",
-    "dev": "pnpm -F @my-monorepo/kaos-web dev",
-    "library:new": "sh -c 'mkdir -p ./packages/libs/${0} && cp -r ./templates/lib ./packages/libs/${0}/'"
+    "dev": "pnpm -F @my-monorepo/web-demo dev",
+    "generate": "pnpm ts-node ./tools/generator.ts"
   },
   "devDependencies": {
     "typescript": "^4.9.3",
