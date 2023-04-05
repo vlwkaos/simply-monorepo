@@ -12,16 +12,8 @@
  */
 import fs from 'fs';
 import path from 'path';
+import { parseArg } from './util';
 
-/**
- * 
- * @param arg 
- * @returns 
- */
-const parseArg = (arg: string) => {
-  const index = process.argv.indexOf(arg);
-  return index > -1 ? process.argv[index + 1] : null;
-};
 
 // get if it's a library or an app
 const lib_or_app = parseArg('--type') === 'app' ? 'app' : 'libs';
