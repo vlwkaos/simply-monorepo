@@ -1,4 +1,4 @@
-import { greets } from '@kaos-editor/kaos-core'
+import { greets } from '@test-mono/shared-lib';
 import './style.css'
 
 greets();

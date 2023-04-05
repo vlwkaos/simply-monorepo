@@ -15,18 +15,18 @@ importers:
       typescript: 4.9.5
       vite: 4.2.1_@types+node@18.15.11
 
-  packages/apps/kaos-web:
+  packages/apps/web-demo:
     specifiers:
-      '@kaos-editor/kaos-core': workspace:*
+      '@test-mono/shared-lib': workspace:*
       typescript: ^4.9.3
       vite: ^4.2.0
     dependencies:
-      '@kaos-editor/kaos-core': link:../../../test/lib
+      '@test-mono/shared-lib': link:../../libs/shared-lib
     devDependencies:
       typescript: 4.9.5
       vite: 4.2.1
 
-  packages/libs/kaos-core:
+  packages/libs/shared-lib:
     specifiers:
       typescript: ^4.9.3
       vite: ^4.2.0
@@ -35,14 +35,6 @@ importers:
       vite: 4.2.1
 
   templates/lib:
-    specifiers:
-      typescript: ^4.9.3
-      vite: ^4.2.0
-    devDependencies:
-      typescript: 4.9.5
-      vite: 4.2.1
-
-  test/lib:
     specifiers:
       typescript: ^4.9.3
       vite: ^4.2.0

@@ -38,27 +38,44 @@ fs.readFile(
 
 // do the same for all package.json files in packages/apps/* and packages/libs/*
 const apps = fs.readdirSync(path.join(__dirname, '../packages/apps'));
-const libs = fs.readdirSync(path.join(__dirname, '../packages/libs'));
-const all = [...apps, ...libs];
-all.forEach((subrepo_name) => {
+apps.forEach((subrepo_name) => {
   fs.readFile(
-    path.join(__dirname, `../packages/${subrepo_name}/package.json`),
+    path.join(__dirname, `../packages/apps/${subrepo_name}/package.json`),
     'utf-8',
     (err, data) => {
       if (err) throw err;
       const result = data
         .replace(new RegExp(monorepo_name, 'g'), new_name)
       fs.writeFile(
-        path.join(__dirname, `../packages/${subrepo_name}/package.json`),
+        path.join(__dirname, `../packages/apps/${subrepo_name}/package.json`),
         result,
         'utf-8',
         (err) => {
           if (err) throw err;
-          console.log(`✅ DONE!!`)
+          console.log(`✅ packages/apps/* DONE!!`)
         })
     }
   );
 })
-
+const libs = fs.readdirSync(path.join(__dirname, '../packages/libs'));
+libs.forEach((subrepo_name) => {
+  fs.readFile(
+    path.join(__dirname, `../packages/libs/${subrepo_name}/package.json`),
+    'utf-8',
+    (err, data) => {
+      if (err) throw err;
+      const result = data
+        .replace(new RegExp(monorepo_name, 'g'), new_name)
+      fs.writeFile(
+        path.join(__dirname, `../packages/libs/${subrepo_name}/package.json`),
+        result,
+        'utf-8',
+        (err) => {
+          if (err) throw err;
+          console.log(`✅ package/libs/* DONE!!`)
+        })
+    }
+  );
+})
 
 

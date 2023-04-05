@@ -1,5 +1,5 @@
 {
-  "name": "@my-monorepo/web-demo",
+  "name": "@test-mono/web-demo",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@my-monorepo/shared-lib": "workspace:*"
+    "@test-mono/shared-lib": "workspace:*"
   },
   "devDependencies": {
     "typescript": "^4.9.3",

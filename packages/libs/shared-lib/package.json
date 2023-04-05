@@ -1,5 +1,5 @@
 {
-  "name": "@my-monorepo/shared-lib",
+  "name": "@test-mono/shared-lib",
   "private": true,
   "version": "0.0.0",
   "type": "module",
