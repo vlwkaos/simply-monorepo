@@ -16,7 +16,7 @@ if (new_name === null) {
 const data = fs.readFileSync(path.join(__dirname, '../package.json'), 'utf-8')
 const monorepo_name = data.match(/"name": "(.*)"/)![1];
 
-console.log(`⏳ Replacing ${monorepo_name} with ${new_name}...`)
+console.log(`🏁 Begin renaming ${monorepo_name} to ${new_name}...`)
 
 // Replace all instances of string '{monorepo_name}' from package.json to {new_name}
 fs.readFile(
