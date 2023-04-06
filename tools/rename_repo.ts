@@ -3,7 +3,7 @@
  */
 import fs from 'fs';
 import path from 'path';
-import { parseArg } from './util';
+import { parseArg, replaceTextInFile } from './util';
 
 // get if it's a library or an app
 const new_name = parseArg('--name');
@@ -19,63 +19,16 @@ const monorepo_name = data.match(/"name": "(.*)"/)![1];
 console.log(`🏁 Begin renaming ${monorepo_name} to ${new_name}...`)
 
 // Replace all instances of string '{monorepo_name}' from package.json to {new_name}
-fs.readFile(
-  path.join(__dirname, `../package.json`),
-  'utf-8',
-  (err, data) => {
-    if (err) throw err;
-    const result = data
-      .replace(new RegExp(monorepo_name, 'g'), new_name)
-    fs.writeFile(
-      path.join(__dirname, `../package.json`),
-      result,
-      'utf-8',
-      (err) => {
-        if (err) throw err;
-      })
-  }
-);
+replaceTextInFile('../package.json', [{ from: monorepo_name, to: new_name }])
 
 // do the same for all package.json files in packages/apps/* and packages/libs/*
 const apps = fs.readdirSync(path.join(__dirname, '../packages/apps'));
 apps.forEach((subrepo_name) => {
-  fs.readFile(
-    path.join(__dirname, `../packages/apps/${subrepo_name}/package.json`),
-    'utf-8',
-    (err, data) => {
-      if (err) throw err;
-      const result = data
-        .replace(new RegExp(monorepo_name, 'g'), new_name)
-      fs.writeFile(
-        path.join(__dirname, `../packages/apps/${subrepo_name}/package.json`),
-        result,
-        'utf-8',
-        (err) => {
-          if (err) throw err;
-          console.log(`✅ packages/apps/* DONE!!`)
-        })
-    }
-  );
+  replaceTextInFile(`../packages/apps/${subrepo_name}/package.json`, [{ from: monorepo_name, to: new_name }])
 })
 const libs = fs.readdirSync(path.join(__dirname, '../packages/libs'));
 libs.forEach((subrepo_name) => {
-  fs.readFile(
-    path.join(__dirname, `../packages/libs/${subrepo_name}/package.json`),
-    'utf-8',
-    (err, data) => {
-      if (err) throw err;
-      const result = data
-        .replace(new RegExp(monorepo_name, 'g'), new_name)
-      fs.writeFile(
-        path.join(__dirname, `../packages/libs/${subrepo_name}/package.json`),
-        result,
-        'utf-8',
-        (err) => {
-          if (err) throw err;
-          console.log(`✅ package/libs/* DONE!!`)
-        })
-    }
-  );
+  replaceTextInFile(`../packages/libs/${subrepo_name}/package.json`, [{ from: monorepo_name, to: new_name }])
 })
 
 

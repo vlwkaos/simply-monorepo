@@ -12,7 +12,7 @@
  */
 import fs from 'fs';
 import path from 'path';
-import { parseArg } from './util';
+import { parseArg, replaceTextInFile } from './util';
 
 
 // get if it's a library or an app
@@ -47,24 +47,7 @@ fs.cpSync(
   path.join(__dirname, `../packages/${lib_or_app}/${subrepo_name}`), { recursive: true })
 
 // replace all instances of string '{monorepo}' from package.json to {monorepo_name}
-fs.readFile(
-  path.join(__dirname, `../packages/${lib_or_app}/${subrepo_name}/package.json`),
-  'utf-8',
-  (err, data) => {
-    if (err) throw err;
-    const result = data
-      .replace(/{monorepo}/g, monorepo_name)
-      .replace(/{subrepo}/g, subrepo_name);
-    fs.writeFile(
-      path.join(__dirname, `../packages/${lib_or_app}/${subrepo_name}/package.json`),
-      result,
-      'utf-8',
-      (err) => {
-        if (err) throw err;
-        console.log(`✅ DONE!!`)
-      })
-  }
-)
+replaceTextInFile(`../packages/${lib_or_app}/${subrepo_name}/package.json`, [{ from: '{monorepo}', to: monorepo_name }, { from: '{subrepo}', to: subrepo_name }])
 
 
 
